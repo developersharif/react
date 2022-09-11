@@ -69,12 +69,12 @@ type OnErrorOrWarning = (
 
 const injectedRenderers: Map<
   ReactRenderer,
-  {|
+  {
     currentDispatcherRef: CurrentDispatcherRef,
     getCurrentFiber: () => Fiber | null,
     onErrorOrWarning: ?OnErrorOrWarning,
     workTagMap: WorkTagMap,
-  |},
+  },
 > = new Map();
 
 let targetConsole: Object = console;

@@ -69,10 +69,10 @@ import styles from './CanvasPage.css';
 
 const CONTEXT_MENU_ID = 'canvas';
 
-type Props = {|
+type Props = {
   profilerData: TimelineData,
   viewState: ViewState,
-|};
+};
 
 function CanvasPage({profilerData, viewState}: Props) {
   return (
@@ -145,12 +145,12 @@ const EMPTY_CONTEXT_INFO: ReactEventInfo = {
   userTimingMark: null,
 };
 
-type AutoSizedCanvasProps = {|
+type AutoSizedCanvasProps = {
   data: TimelineData,
   height: number,
   viewState: ViewState,
   width: number,
-|};
+};
 
 function AutoSizedCanvas({
   data,

@@ -17,9 +17,9 @@ declare class TaskController {
 
 type PostTaskPriorityLevel = 'user-blocking' | 'user-visible' | 'background';
 
-type CallbackNode = {|
+type CallbackNode = {
   _controller: TaskController,
-|};
+};
 
 import {
   ImmediatePriority,

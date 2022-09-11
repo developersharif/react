@@ -29,10 +29,10 @@ type Options = {
   identifierPrefix?: string,
 };
 
-type PipeableStream = {|
+type PipeableStream = {
   abort(reason: mixed): void,
   pipe<T: Writable>(destination: T): T,
-|};
+};
 
 function renderToPipeableStream(
   model: ReactModel,

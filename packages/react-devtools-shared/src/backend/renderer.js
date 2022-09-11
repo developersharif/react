@@ -126,23 +126,23 @@ import type {
 type getDisplayNameForFiberType = (fiber: Fiber) => string | null;
 type getTypeSymbolType = (type: any) => symbol | number;
 
-type ReactPriorityLevelsType = {|
+type ReactPriorityLevelsType = {
   ImmediatePriority: number,
   UserBlockingPriority: number,
   NormalPriority: number,
   LowPriority: number,
   IdlePriority: number,
   NoPriority: number,
-|};
+};
 
-type ReactTypeOfSideEffectType = {|
+type ReactTypeOfSideEffectType = {
   DidCapture: number,
   NoFlags: number,
   PerformedWork: number,
   Placement: number,
   Incomplete: number,
   Hydrating: number,
-|};
+};
 
 function getFiberFlags(fiber: Fiber): number {
   // The name of this field changed from "effectTag" to "flags"
@@ -157,14 +157,14 @@ const getCurrentTime =
 
 export function getInternalReactConstants(
   version: string,
-): {|
+): {
   getDisplayNameForFiber: getDisplayNameForFiberType,
   getTypeSymbol: getTypeSymbolType,
   ReactPriorityLevels: ReactPriorityLevelsType,
   ReactTypeOfSideEffect: ReactTypeOfSideEffectType,
   ReactTypeOfWork: WorkTagMap,
   StrictModeBits: number,
-|} {
+} {
   const ReactTypeOfSideEffect: ReactTypeOfSideEffectType = {
     DidCapture: 0b10000000,
     NoFlags: 0b00,
@@ -812,32 +812,28 @@ export function attach(
   // Patching the console enables DevTools to do a few useful things:
   // * Append component stacks to warnings and error messages
   // * Disable logging during re-renders to inspect hooks (see inspectHooksOfFiber)
-  //
-  // Don't patch in test environments because we don't want to interfere with Jest's own console overrides.
-  if (process.env.NODE_ENV !== 'test') {
-    registerRendererWithConsole(renderer, onErrorOrWarning);
+  registerRendererWithConsole(renderer, onErrorOrWarning);
 
-    // The renderer interface can't read these preferences directly,
-    // because it is stored in localStorage within the context of the extension.
-    // It relies on the extension to pass the preference through via the global.
-    const appendComponentStack =
-      window.__REACT_DEVTOOLS_APPEND_COMPONENT_STACK__ !== false;
-    const breakOnConsoleErrors =
-      window.__REACT_DEVTOOLS_BREAK_ON_CONSOLE_ERRORS__ === true;
-    const showInlineWarningsAndErrors =
-      window.__REACT_DEVTOOLS_SHOW_INLINE_WARNINGS_AND_ERRORS__ !== false;
-    const hideConsoleLogsInStrictMode =
-      window.__REACT_DEVTOOLS_HIDE_CONSOLE_LOGS_IN_STRICT_MODE__ === true;
-    const browserTheme = window.__REACT_DEVTOOLS_BROWSER_THEME__;
+  // The renderer interface can't read these preferences directly,
+  // because it is stored in localStorage within the context of the extension.
+  // It relies on the extension to pass the preference through via the global.
+  const appendComponentStack =
+    window.__REACT_DEVTOOLS_APPEND_COMPONENT_STACK__ !== false;
+  const breakOnConsoleErrors =
+    window.__REACT_DEVTOOLS_BREAK_ON_CONSOLE_ERRORS__ === true;
+  const showInlineWarningsAndErrors =
+    window.__REACT_DEVTOOLS_SHOW_INLINE_WARNINGS_AND_ERRORS__ !== false;
+  const hideConsoleLogsInStrictMode =
+    window.__REACT_DEVTOOLS_HIDE_CONSOLE_LOGS_IN_STRICT_MODE__ === true;
+  const browserTheme = window.__REACT_DEVTOOLS_BROWSER_THEME__;
 
-    patchConsole({
-      appendComponentStack,
-      breakOnConsoleErrors,
-      showInlineWarningsAndErrors,
-      hideConsoleLogsInStrictMode,
-      browserTheme,
-    });
-  }
+  patchConsole({
+    appendComponentStack,
+    breakOnConsoleErrors,
+    showInlineWarningsAndErrors,
+    hideConsoleLogsInStrictMode,
+    browserTheme,
+  });
 
   const debug = (
     name: string,
@@ -1599,10 +1595,10 @@ export function attach(
 
   type OperationsArray = Array<number>;
 
-  type StringTableEntry = {|
+  type StringTableEntry = {
     encodedString: Array<number>,
     id: number,
-  |};
+  };
 
   const pendingOperations: OperationsArray = [];
   const pendingRealUnmountedIDs: Array<number> = [];
@@ -3954,7 +3950,7 @@ export function attach(
     }
   }
 
-  type CommitProfilingData = {|
+  type CommitProfilingData = {
     changeDescriptions: Map<number, ChangeDescription> | null,
     commitTime: number,
     durations: Array<number>,
@@ -3963,7 +3959,7 @@ export function attach(
     passiveEffectDuration: number | null,
     priorityLevel: string | null,
     updaters: Array<SerializedElement> | null,
-  |};
+  };
 
   type CommitProfilingMetadataMap = Map<number, Array<CommitProfilingData>>;
   type DisplayNamesByRootID = Map<number, string>;

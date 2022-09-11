@@ -154,7 +154,7 @@ function useReducer<S, I, A>(
   return [state, (action: A) => {}];
 }
 
-function useRef<T>(initialValue: T): {|current: T|} {
+function useRef<T>(initialValue: T): {current: T} {
   const hook = nextHook();
   const ref = hook !== null ? hook.memoizedState : {current: initialValue};
   hookLog.push({
@@ -208,7 +208,7 @@ function useEffect(
 }
 
 function useImperativeHandle<T>(
-  ref: {|current: T | null|} | ((inst: T | null) => mixed) | null | void,
+  ref: {current: T | null} | ((inst: T | null) => mixed) | null | void,
   create: () => T,
   inputs: Array<mixed> | void | null,
 ): void {

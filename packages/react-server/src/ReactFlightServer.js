@@ -272,6 +272,7 @@ function attemptResolveElement(
             );
           }
         }
+        // $FlowFixMe issue discovered when updating Flow
         return [
           REACT_ELEMENT_TYPE,
           type,
@@ -465,7 +466,7 @@ function describeValueForErrorMessage(value: ReactModel): string {
 
 function describeObjectForErrorMessage(
   objectOrArray:
-    | {+[key: string | number]: ReactModel}
+    | {+[key: string | number]: ReactModel, ...}
     | $ReadOnlyArray<ReactModel>,
   expandedName?: string,
 ): string {
@@ -495,7 +496,7 @@ function describeObjectForErrorMessage(
     return str;
   } else {
     let str = '{';
-    const object: {+[key: string | number]: ReactModel} = objectOrArray;
+    const object: {+[key: string | number]: ReactModel, ...} = objectOrArray;
     const names = Object.keys(object);
     for (let i = 0; i < names.length; i++) {
       if (i > 0) {
@@ -698,6 +699,7 @@ export function resolveModelToJSON(
       }
     }
 
+    // $FlowFixMe
     return value;
   }
 
@@ -839,6 +841,7 @@ function emitModuleChunk(
   id: number,
   moduleMetaData: ModuleMetaData,
 ): void {
+  // $FlowFixMe ModuleMetaData is not a ReactModel
   const processedChunk = processModuleChunk(request, id, moduleMetaData);
   request.completedModuleChunks.push(processedChunk);
 }

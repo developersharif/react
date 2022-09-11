@@ -26,17 +26,17 @@ import {rectContainsPoint} from '../geometry';
 import {noopLayout} from '../layouter';
 import {clamp} from '../utils/clamp';
 
-type ResizingState = $ReadOnly<{|
+type ResizingState = $ReadOnly<{
   /** Distance between top of resize bar and mouseY */
   cursorOffsetInBarFrame: number,
   /** Mouse's vertical coordinates relative to canvas */
   mouseY: number,
-|}>;
+}>;
 
-type LayoutState = {|
+type LayoutState = {
   /** Resize bar's vertical position relative to resize view's frame.origin.y */
   barOffsetY: number,
-|};
+};
 
 const RESIZE_BAR_HEIGHT = 8;
 const RESIZE_BAR_WITH_LABEL_HEIGHT = 16;
